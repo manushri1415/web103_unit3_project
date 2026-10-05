@@ -1,59 +1,127 @@
 .available-locations {
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    display: grid;
+    gap: 28px;
+    margin: 0 auto 64px;
+    width: min(1120px, calc(100vw - 32px));
 }
 
-svg {
+.map-stage {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(7, 13, 34, 0.78);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.map-copy {
     position: absolute;
-    top: -1px;
-    left: 0;
-    width: 100%;
+    top: 28px;
+    left: 28px;
+    z-index: 2;
+    width: min(360px, calc(100% - 56px));
+    padding: 20px;
+    background: rgba(7, 13, 34, 0.86);
+    border-left: 6px solid var(--gold-color);
 }
 
-svg polygon {
+.map-copy h2,
+.map-copy p {
+    color: white;
+    margin: 0;
+}
+
+.map-copy h2 {
+    margin-bottom: 10px;
+}
+
+.plaza-map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 900px;
+}
+
+.plaza-map polygon {
     fill: transparent;
     cursor: pointer;
+    transition: fill 160ms ease, stroke 160ms ease;
 }
 
-svg polygon:hover {
-    fill: rgba(55, 216, 232, 0.2);
+.plaza-map polygon:hover,
+.plaza-map polygon.is-active {
+    fill: rgba(57, 214, 214, 0.32);
+    stroke: var(--gold-color);
+    stroke-width: 4px;
 }
 
-.venue1-button-overlay {
-    opacity: 0;
-    z-index: 10;
-    position: relative;
-    top: 15%;
-    left: -5%;
+.location-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
 }
 
-.venue2-button-overlay {
-    opacity: 0;
-    z-index: 10;
+.location-card {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 14px;
+    min-height: 142px;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.68);
+    background: rgba(7, 13, 34, 0.82);
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
-.venue3-button-overlay {
-    opacity: 0;
-    z-index: 10;
-    position: relative;
-    left: 30%;
+.location-card:hover,
+.location-card.is-active {
+    transform: translateY(-4px);
+    border-color: var(--gold-color);
+    background: rgba(17, 22, 35, 0.94);
 }
 
-.venue4-button-overlay {
-    opacity: 0;
-    z-index: 10;
-    position: relative;
-    top: 20%;
-    left: -5%;
+.location-card img {
+    width: 88px;
+    height: 100%;
+    min-height: 118px;
+    object-fit: cover;
 }
 
-.venue1-button-overlay button,
-.venue2-button-overlay button,
-.venue3-button-overlay button,
-.venue4-button-overlay button {
-    width: 200px;
+.location-card h3 {
+    margin: 0 0 8px;
+}
+
+.location-card p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.88rem;
+    line-height: 1.35;
+    margin: 0 0 10px;
+}
+
+.location-card span {
+    color: var(--aqua-color);
+    font-size: 0.78rem;
+    font-weight: 900;
     text-transform: uppercase;
-    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .map-stage {
+        min-height: 500px;
+        overflow-x: auto;
+    }
+
+    .map-copy {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+    }
+
+    .plaza-map {
+        top: 120px;
+        height: 380px;
+    }
 }

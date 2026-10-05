@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
 #root {
     background: url('./assets/unitygrid.jpg');
     background-repeat: no-repeat;
@@ -9,15 +17,18 @@
     background-attachment: fixed;
     background-color: var(--secondary-color);
     font-family: Nunito Sans, Verdana, sans-serif;
-    height: 100vh;
-    --main-color: rgb(217, 29, 242);
-    --secondary-color: rgb(3, 1, 64);
+    min-height: 100vh;
+    --main-color: rgb(220, 55, 170);
+    --secondary-color: rgb(7, 13, 34);
+    --aqua-color: rgb(57, 214, 214);
+    --gold-color: rgb(246, 190, 78);
+    --ink-color: rgb(17, 22, 35);
     --primary: var(--main-color);
-    --primary-hover: rgb(111, 28, 166);
-    --primary-focus: rgb(217, 29, 242);
+    --primary-hover: rgb(190, 39, 141);
+    --primary-focus: rgb(57, 214, 214);
     --secondary: var(--secondary-color);
-    --secondary-hover: rgb(4, 66, 191);
-    --secondary-focus: rgb(111, 28, 166);
+    --secondary-hover: rgb(21, 42, 79);
+    --secondary-focus: rgb(246, 190, 78);
     --h1-color: white;
     --h2-color: white;
     --h3-color: white;
@@ -33,11 +44,12 @@
 #root h1, #root h2, #root h3 {
     text-transform: uppercase;
     margin-bottom: 0px;
+    letter-spacing: 0;
 }
 
 #root h1 {
     font-family: Rock Salt, cursive;
-    font-size: 3em;
+    font-size: clamp(2rem, 4vw, 3.4rem);
     font-weight: bold;
     text-shadow: 3px 3px 4px black;
 }
@@ -69,10 +81,33 @@
     align-items: center;
 }
 
+#root [role=button]:focus-visible,
+#root a:focus-visible,
+#root select:focus-visible {
+    outline: 3px solid var(--gold-color);
+    outline-offset: 4px;
+}
+
 #root article {
     padding: 0px;
 }
 
 #root select {
-    width: 400px;
+    width: 100%;
+}
+
+.eyebrow {
+    color: var(--aqua-color);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+}
+
+.status-message {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
 }

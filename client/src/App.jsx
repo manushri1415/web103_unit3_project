@@ -12,20 +12,8 @@ const App = () => {
       element: <Locations />
     },
     {
-      path: '/echolounge',
-      element: <LocationEvents index={1} />
-    },
-    {
-      path: '/houseofblues',
-      element: <LocationEvents index={2} />
-    },
-    {
-      path: '/pavilion',
-      element: <LocationEvents index={3} />
-    },
-    {
-      path: '/americanairlines',
-      element: <LocationEvents index={4} />
+      path: '/locations/:slug',
+      element: <LocationEvents />
     },
     {
       path: '/events',
@@ -37,12 +25,14 @@ const App = () => {
     <div className='app'>
 
       <header className='main-header'>
-        <h1>UnityGrid Plaza</h1>
+        <Link className='brand-link' to='/'>
+          <h1>UnityGrid Plaza</h1>
+        </Link>
 
-        <div className='header-buttons'>
+        <nav className='header-buttons' aria-label='Main navigation'>
           <Link to='/' role='button'>Home</Link>
           <Link to='/events' role='button'>Events</Link>
-        </div>
+        </nav>
       </header>
 
       <main>

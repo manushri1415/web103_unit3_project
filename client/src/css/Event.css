@@ -1,42 +1,48 @@
 .event-information {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    min-height: 340px;
     padding: 0px;
-    margin: 20px;
+    margin: 0;
     border: 2px solid white;
-    border-radius: 0px;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--ink-color);
 }
 
 .event-information img {
     width: 100%;
-    height: 100%;
+    height: 340px;
     object-fit: cover;
+    transition: transform 260ms ease, filter 260ms ease;
 }
 
 .event-information-overlay {
     position: absolute;
     bottom: 0;
-    left: 100%;
+    left: 0;
     right: 0;
-    background-color: var(--primary);
+    background: linear-gradient(180deg, rgba(7, 13, 34, 0.08), rgba(7, 13, 34, 0.95) 42%);
     overflow: hidden;
-    width: 0;
+    width: 100%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: background 0.5s ease;
 }
 
-.event-information:hover .event-information-overlay {
-    width: 100%;
-    left: 0;
+.event-information:hover img {
+    filter: saturate(0.95) brightness(0.74);
+    transform: scale(1.04);
 }
 
 .text {
     position: absolute;
     overflow: hidden;
-    top: 50%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 24px;
+    transform: translateX(-50%);
+    text-align: left;
 }
 
 .text i {
@@ -45,13 +51,40 @@
 
 .text p {
     color: white;
-    margin-top: 10px;
+    margin: 10px 0 0;
+}
+
+.event-location {
+    color: var(--aqua-color) !important;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.time-remaining,
+.negative-time-remaining {
+    display: inline-block;
+    font-weight: 900;
+    padding: 8px 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.time-remaining {
+    background-color: var(--gold-color);
+    color: var(--ink-color) !important;
 }
 
 .negative-time-remaining {
-    background-color: red;
+    background-color: rgb(151, 34, 47);
     color: white;
-    font-weight: 700;
-    padding: 10px;
-    text-align: center;
+}
+
+.event-passed img {
+    filter: grayscale(0.8) brightness(0.7);
+}
+
+.event-passed h3 {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
 }
